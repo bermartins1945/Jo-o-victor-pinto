@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A História de João Victor - Uma Jornada de Amor e Descobertas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --rainbow-red: #FF0018;
+            --rainbow-orange: #FFA52C;
+            --rainbow-yellow: #FFFF41;
+            --rainbow-green: #008018;
+            --rainbow-blue: #0000F9;
+            --rainbow-purple: #86007D;
+            --soft-pink: #FFE5E5;
+            --soft-blue: #E5F3FF;
+            --soft-purple: #F0E5FF;
+            --text-dark: #2D3748;
+            --text-light: #718096;
+            --white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background: linear-gradient(135deg, #fafafa 0%, #f5f5f5 100%);
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Animações */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes rainbow-flow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes fade-in-up {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes heart-beat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Header/Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, 
+                var(--rainbow-red) 0%, 
+                var(--rainbow-orange) 20%, 
+                var(--rainbow-yellow) 40%, 
+                var(--rainbow-green) 60%, 
+                var(--rainbow-blue) 80%, 
+                var(--rainbow-purple) 100%);
+            background-size: 400% 400%;
+            animation: rainbow-flow 15s ease infinite;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            color: var(--white);
+            animation: fade-in-up 1.5s ease-out;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            font-weight: 700;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            font-weight: 300;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .rainbow-hearts {
+            font-size: 3rem;
+            margin: 2rem 0;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--white);
+            font-size: 2rem;
+            animation: float 2s ease-in-out infinite;
+            cursor: pointer;
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 5vw, 3rem);
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--text-dark);
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, 
+                var(--rainbow-red), 
+                var(--rainbow-orange), 
+                var(--rainbow-yellow), 
+                var(--rainbow-green), 
+                var(--rainbow-blue), 
+                var(--rainbow-purple));
+            margin: 1rem auto;
+            border-radius: 2px;
+        }
+
+        /* Cards */
+        .story-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 2rem 0;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .story-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, 
+                var(--rainbow-red), 
+                var(--rainbow-orange), 
+                var(--rainbow-yellow), 
+                var(--rainbow-green), 
+                var(--rainbow-blue), 
+                var(--rainbow-purple));
+        }
+
+        .story-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px rgba(0,0,0,0.15);
+        }
+
+        .story-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--rainbow-purple);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .story-card p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, var(--soft-pink) 0%, var(--soft-purple) 100%);
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            border-left: 5px solid var(--rainbow-purple);
+        }
+
+        .highlight-quote {
+            font-style: italic;
+            font-size: 1.2rem;
+            color: var(--text-dark);
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Image placeholders */
+        .image-placeholder {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, var(--soft-blue) 0%, var(--soft-purple) 100%);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 2rem 0;
+            font-size: 4rem;
+            color: var(--rainbow-purple);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .image-placeholder::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
+            transform: rotate(45deg);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, 
+                var(--rainbow-red), 
+                var(--rainbow-orange), 
+                var(--rainbow-yellow), 
+                var(--rainbow-green), 
+                var(--rainbow-blue), 
+                var(--rainbow-purple));
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            margin: 3rem 0;
+            position: relative;
+            width: 50%;
+            padding: 0 2rem;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+            text-align: left;
+        }
+
+        .timeline-content {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            position: relative;
+            display: inline-block;
+            max-width: 300px;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content::after {
+            content: '';
+            position: absolute;
+            right: -10px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 0;
+            height: 0;
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+            border-left: 10px solid var(--white);
+        }
+
+        .timeline-item:nth-child(even) .timeline-content::after {
+            content: '';
+            position: absolute;
+            left: -10px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 0;
+            height: 0;
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+            border-right: 10px solid var(--white);
+        }
+
+        .timeline-dot {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1;
+            box-shadow: 0 0 0 4px rgba(255,255,255,0.3);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-dot {
+            right: -10px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-dot {
+            left: -10px;
+        }
+
+        .timeline-item:nth-child(1) .timeline-dot { background: var(--rainbow-red); }
+        .timeline-item:nth-child(2) .timeline-dot { background: var(--rainbow-orange); }
+        .timeline-item:nth-child(3) .timeline-dot { background: var(--rainbow-yellow); }
+        .timeline-item:nth-child(4) .timeline-dot { background: var(--rainbow-green); }
+        .timeline-item:nth-child(5) .timeline-dot { background: var(--rainbow-blue); }
+        .timeline-item:nth-child(6) .timeline-dot { background: var(--rainbow-purple); }
+
+        .timeline-icon {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Pride Section */
+        .pride-section {
+            background: linear-gradient(135deg, var(--soft-purple) 0%, var(--soft-pink) 100%);
+            border-radius: 30px;
+            padding: 4rem 2rem;
+            text-align: center;
+            margin: 4rem auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pride-section::before {
+            content: '🏳️‍🌈';
+            position: absolute;
+            font-size: 15rem;
+            opacity: 0.1;
+            top: -50px;
+            right: -50px;
+            transform: rotate(-15deg);
+        }
+
+        .pride-section h2 {
+            color: var(--rainbow-purple);
+            margin-bottom: 2rem;
+        }
+
+        .pride-message {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto;
+            color: var(--text-dark);
+        }
+
+        .rainbow-text {
+            background: linear-gradient(90deg, 
+                var(--rainbow-red), 
+                var(--rainbow-orange), 
+                var(--rainbow-yellow), 
+                var(--rainbow-green), 
+                var(--rainbow-blue), 
+                var(--rainbow-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+        }
+
+        /* Final Quote */
+        .final-quote {
+            background: linear-gradient(135deg, 
+                var(--rainbow-red) 0%, 
+                var(--rainbow-orange) 20%, 
+                var(--rainbow-yellow) 40%, 
+                var(--rainbow-green) 60%, 
+                var(--rainbow-blue) 80%, 
+                var(--rainbow-purple) 100%);
+            color: var(--white);
+            padding: 5rem 2rem;
+            text-align: center;
+            margin-top: 4rem;
+            position: relative;
+        }
+
+        .final-quote-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .final-quote p {
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            line-height: 1.4;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .final-quote::before {
+            content: '"';
+            font-size: 10rem;
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0.2;
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text-dark);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.9rem;
+        }
+
+        .heart-animation {
+            display: inline-block;
+            animation: heart-beat 1.5s ease-in-out infinite;
+            color: var(--rainbow-red);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 30px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                left: 0 !important;
+                padding-left: 80px;
+                text-align: left !important;
+            }
+
+            .timeline-dot {
+                left: 20px !important;
+                right: auto !important;
+            }
+
+            .timeline-content::after {
+                display: none;
+            }
+
+            .story-card {
+                padding: 2rem 1.5rem;
+            }
+
+            section {
+                padding: 3rem 1rem;
+            }
+        }
+
+        /* Decorative elements */
+        .floating-elements {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .floating-heart {
+            position: absolute;
+            font-size: 1.5rem;
+            opacity: 0.3;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-heart:nth-child(1) { left: 10%; top: 20%; animation-delay: 0s; color: var(--rainbow-red); }
+        .floating-heart:nth-child(2) { left: 80%; top: 60%; animation-delay: 2s; color: var(--rainbow-purple); }
+        .floating-heart:nth-child(3) { left: 90%; top: 30%; animation-delay: 4s; color: var(--rainbow-blue); }
+        .floating-heart:nth-child(4) { left: 15%; top: 80%; animation-delay: 1s; color: var(--rainbow-yellow); }
+        .floating-heart:nth-child(5) { left: 70%; top: 10%; animation-delay: 3s; color: var(--rainbow-green); }
+    </style>
+</head>
+<body>
+    <!-- Floating decorative elements -->
+    <div class="floating-elements">
+        <div class="floating-heart">💜</div>
+        <div class="floating-heart">💙</div>
+        <div class="floating-heart">💚</div>
+        <div class="floating-heart">💛</div>
+        <div class="floating-heart">🧡</div>
+    </div>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-content">
+            <h1>A História de João Victor</h1>
+            <p class="hero-subtitle">Uma história de descobertas, sentimentos e coragem para ser quem realmente é.</p>
+            <div class="rainbow-hearts">
+                🌈 💜 💙 🌈
+            </div>
+        </div>
+        <div class="scroll-indicator" onclick="document.getElementById('descoberta').scrollIntoView({behavior: 'smooth'})">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </header>
+
+    <!-- Minha Descoberta -->
+    <section id="descoberta" class="animate-on-scroll">
+        <h2 class="section-title">Minha Descoberta</h2>
+        <div class="story-card">
+            <h3><i class="fas fa-seedling"></i> As Primeiras Sensações</h3>
+            <div class="image-placeholder">🌱</div>
+            <p>Lembro-me perfeitamente daquele momento. Eu tinha cerca de 13 anos quando comecei a perceber que algo era diferente em mim. Não era algo que me assustava, mas sim uma curiosidade genuína, um sentimento que eu ainda não sabia nomear.</p>
+            
+            <p>Enquanto meus amigos falavam sobre garotas, eu sentia algo diferente. Meus olhos buscavam os meninos da turma, e meu coração acelerava de um jeito que eu nunca havia sentido antes. Era confuso, mas ao mesmo tempo, parecia tão natural.</p>
+            
+            <div class="highlight">
+                <p class="highlight-quote">"Às vezes, a gente sabe quem somos antes mesmo de termos palavras para explicar."</p>
+            </div>
+            
+            <p>Levei tempo para entender. Houve noites em que chorei, me perguntando se estava certo, se era normal. Mas no fundo, no silêncio do meu quarto, eu sabia: isso era quem eu era. E começar a aceitar isso foi o primeiro passo de uma jornada linda.</p>
+        </div>
+    </section>
+
+    <!-- Primeira Paixão -->
+    <section id="paixao" class="animate-on-scroll">
+        <h2 class="section-title">A Primeira Paixão</h2>
+        <div class="story-card">
+            <h3><i class="fas fa-heart"></i> Quando o Coração Bateu Mais Forte</h3>
+            <div class="image-placeholder"></div>
+            <p>Foi no segundo ano do ensino médio que conheci o Pedro. Ele era tranquilo, tinha um sorriso que iluminava o dia inteiro e uma gentileza que me desarmava completamente. Não foi amor à primeira vista, mas algo que foi crescendo devagarinho, como uma flor que desabrocha.</p>
+            
+            <p>Lembro das borboletas no estômago toda vez que ele se aproximava. Do nervosismo quando nossos olhos se encontravam no corredor da escola. Das conversas que pareciam não ter fim, onde eu descobria que gostávamos das mesmas músicas, dos mesmos filmes, das mesmas coisas bobas da vida.</p>
+            
+            <p>Essa paixão me ensinou que o amor não tem gênero, não tem regras. Ele simplesmente acontece. E quando acontece, é a coisa mais bonita do mundo. Mesmo que não tenha durado para sempre, aquele sentimento me mostrou que eu era capaz de amar e ser amado.</p>
+            
+            <div class="highlight">
+                <p class="highlight-quote">"Amar pela primeira vez é como descobrir uma nova cor. Você nunca sabia que precisava dela, mas agora não consegue imaginar o mundo sem ela."</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Primeiro Beijo -->
+    <section id="beijo" class="animate-on-scroll">
+        <h2 class="section-title">O Primeiro Beijo</h2>
+        <div class="story-card">
+            <h3><i class="fas fa-kiss-wink-heart"></i> Um Momento Inesquecível</h3>
+            <div class="image-placeholder"></div>
+            <p>Estávamos numa tarde de sábado, sentados no parque, conversando sobre tudo e nada. O sol estava se pondo, pintando o céu de laranja e rosa. De repente, o silêncio caiu entre nós, mas não era um silêncio desconfortável. Era cheio de significado.</p>
+            
+            <p>Ele me olhou de um jeito diferente, e eu senti meu coração bater tão forte que achei que ele pudesse ouvir. Meus pensamentos giravam: "E se...? Será que...? E se der errado?" Mas então, ele se aproximou devagar, me dando tempo para recuar se eu quisesse.</p>
+            
+            <p>Eu não quis recuar. Quando nossos lábios se tocaram, foi como se o mundo parasse por um instante. Não foi apenas um beijo físico - foi a confirmação de tudo que eu sentia, a materialização de todos os meus sonhos e medos. Foi doce, foi gentil, foi perfeito.</p>
+            
+            <p>Depois, ficamos ali, de mãos dadas, sem precisar dizer nada. Eu sabia que aquele momento marcaria minha vida para sempre. Não pela técnica ou pela perfeição, mas pelo significado: era eu, sendo quem eu sou, amando quem eu queria amar.</p>
+        </div>
+    </section>
+
+    <!-- Orgulho -->
+    <section id="orgulho" class="animate-on-scroll">
+        <div class="pride-section">
+            <h2 class="section-title">Orgulho de Ser Quem Sou</h2>
+            <div class="pride-message">
+                <p>Cada etapa dessa jornada me ensinou algo valioso. Aprendi que <span class="rainbow-text">ser gay</span> não é uma fase, não é uma escolha, não é algo de que precise me envergonhar. É parte de quem eu sou, assim como a cor dos meus olhos ou o formato do meu sorriso.</p>
+                
+                <br>
+                
+                <p>Hoje, olho para trás e vejo cada descoberta como um degrau que me trouxe até aqui. Cada dúvida superada, cada medo enfrentado, cada momento de alegria genuína. Tudo isso me construiu.</p>
+                
+                <br>
+                
+                <p>Se você está lendo isso e passando por algo parecido, saiba que <strong>você não está sozinho</strong>. Sua jornada é única, seus sentimentos são válidos, e você merece ser feliz exatamente como é. O mundo precisa de pessoas autênticas, corajosas e cheias de amor - pessoas como você.</p>
+                
+                <div style="margin-top: 2rem; font-size: 3rem;">
+                    🏳️‍🌈 💜 💙  💚 💛 🧡
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline -->
+    <section id="timeline" class="animate-on-scroll">
+        <h2 class="section-title">Minha Jornada</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-icon">🌱</div>
+                    <h4>Primeiras Descobertas</h4>
+                    <p>Os primeiros sinais, as primeiras dúvidas</p>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-icon">💭</div>
+                    <h4>Primeiros Sentimentos</h4>
+                    <p>Entendendo o que sentia</p>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-icon">💜</div>
+                    <h4>Primeira Paixão</h4>
+                    <p>O coração batendo mais forte</p>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-icon">🌈</div>
+                    <h4>Primeiro Beijo</h4>
+                    <p>Um momento inesquecível</p>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-icon">✨</div>
+                    <h4>Aceitação</h4>
+                    <p>Abraçando quem sou</p>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-icon">️‍🌈</div>
+                    <h4>Orgulho</h4>
+                    <p>Sendo feliz sendo eu mesmo</p>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final Quote -->
+    <div class="final-quote">
+        <div class="final-quote-content">
+            <p>Ser quem você é também é uma forma de coragem.</p>
+            <div style="margin-top: 2rem; font-size: 2rem;">
+                <span class="heart-animation">💜</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>Feito com <span class="heart-animation">❤️</span> e muito orgulho | João Victor da Luz dos Campos Pinto</p>
+        <p style="margin-top: 0.5rem; opacity: 0.8;">© 2026 - Uma história de amor e autodescoberta</p>
+    </footer>
+
+    <script>
+        // Animação ao scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-on-scroll').forEach((el) => {
+            observer.observe(el);
+        });
+
+        // Efeito suave nos cards ao passar o mouse
+        document.querySelectorAll('.story-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) rotateX(2deg)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) rotateX(0)';
+            });
+        });
+
+        // Animação dos corações flutuantes aleatória
+        setInterval(() => {
+            const hearts = document.querySelectorAll('.floating-heart');
+            hearts.forEach(heart => {
+                const randomDelay = Math.random() * 5;
+                heart.style.animationDelay = `${randomDelay}s`;
+            });
+        }, 5000);
+    </script>
+</body>
+                  </html>
